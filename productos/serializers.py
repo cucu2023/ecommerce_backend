@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Producto, ImagenProducto
+from .models import Producto, ImagenProducto, DetalleProducto
 
 
 class ImagenSerializer(serializers.ModelSerializer):
@@ -14,9 +14,14 @@ class ProductoSerializer(serializers.ModelSerializer):
     class Meta:
         model = Producto
         fields = [
-            'id', 'nombre', 'descripcion', 'precio_regular', 'categoria',
-            'precio_promocional', 'estado', 'talla', 'color',
-            'cantidad_disponible', 'fecha_creacion', 'fecha_actualizacion',
-            'imagenes'
-        ]
-        read_only_fields = ['fecha_creacion', 'fecha_actualizacion']
+            '__all__',]
+        # Nombres de los campos a excluir
+        exclude = ['fecha_creacion', 'fecha_actualizacion']
+
+
+class DetalleProductoSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = DetalleProducto
+        fields = '__all__'
+        # Nombres de los campos a excluir
+        exclude = ['fecha_creacion', 'fecha_actualizacion']

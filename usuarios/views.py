@@ -22,7 +22,7 @@ class RegisterView(APIView):
             password=data['password']
         )
         serializer = UserSerializer(user)
-        return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(serializer.data, status=status.HTTP_201_CREATED, content_type='application/json')
 
 
 class protectedView(APIView):
