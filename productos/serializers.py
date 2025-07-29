@@ -13,9 +13,6 @@ class ProductoSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Producto
-        fields = [
-            '__all__',]
-        # Nombres de los campos a excluir
         exclude = ['fecha_creacion', 'fecha_actualizacion']
 
 
@@ -24,4 +21,3 @@ class DetalleProductoSerializer(serializers.ModelSerializer):
         model = DetalleProducto
         fields = '__all__'
         # Nombres de los campos a excluir
-        exclude = ['fecha_creacion', 'fecha_actualizacion']
